@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const User = require("./models/userModel"); // Ensure this model exists
 
 // Load env vars
 dotenv.config();
@@ -28,6 +29,43 @@ app.get("/health", (req, res) => {
 
 // Routes
 app.use("/api/users", require("./routes/userRoutes"));
+
+// Login endpoint to verify user credentials
+app.post("/api/users/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
+    }
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ message: "User not found. Please register." });
+    }
+
+    // Verify password (assuming passwords are stored in plain text for simplicity)
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // Return user details (excluding sensitive information)
+    res.status(200).json({
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+    });
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 
