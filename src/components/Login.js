@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (isSubmitting) return; // Prevent multiple submissions
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
     const username = document.getElementById("username").value;
@@ -23,34 +23,46 @@ const Login = () => {
     if (!username || !password) {
       setMessage("Please fill in all details");
       setIsSubmitting(false);
-    } else {
-      // Placeholder for database integration
-      try {
-        // Simulate a database call
-        const response = await fakeDatabaseCall(username, password);
-        if (response.success) {
-          setMessage("");
-          navigate("/");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("user", JSON.stringify(data));
+        setMessage("");
+        navigate("/");
+      } else {
+        if (response.status === 401) {
+          setMessage(
+            <div>
+              User not found. Please{" "}
+              <a href="/register" className="register-link">
+                register here
+              </a>{" "}
+              to create an account.
+            </div>
+          );
         } else {
-          setMessage("Invalid username or password");
+          setMessage(data.message || "Invalid username or password");
         }
-      } catch (error) {
-        setMessage("An error occurred. Please try again.");
       }
+    } catch (error) {
+      setMessage(
+        "Unable to connect to the server. Please check your connection and try again."
+      );
+    } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const fakeDatabaseCall = (username, password) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (username === "Admin" && password === "Admin@123") {
-          resolve({ success: true });
-        } else {
-          resolve({ success: false });
-        }
-      }, 1000);
-    });
   };
 
   return (
@@ -85,7 +97,7 @@ const Login = () => {
             />
           </div>
           <button type="submit" disabled={isSubmitting}>
-            <span>Login</span>
+            <span>{isSubmitting ? "Logging in..." : "Login"}</span>
           </button>
           <p>
             New user? <a href="/register">Click here to register</a>

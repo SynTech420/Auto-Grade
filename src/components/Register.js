@@ -5,6 +5,7 @@ import "./styles.css";
 const Register = () => {
   const [message, setMessage] = useState("");
   const [warning, setWarning] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const navigate = useNavigate();
@@ -22,36 +23,74 @@ const Register = () => {
     return regex.test(password);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const role = document.getElementById("role").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (username && email && role && password && confirmPassword) {
-      if (validatePassword(password)) {
-        if (password === confirmPassword) {
-          // Simulate successful registration
-          setMessage("Successfully registered!");
-          setWarning("");
-          setTimeout(() => {
-            navigate("/login");
-          }, 2000);
-        } else {
-          setWarning("Passwords do not match.");
-          setMessage("");
-        }
-      } else {
-        setWarning(
-          "Password must be 7-15 characters long, contain at least one capital letter, one special character, and one small letter."
-        );
-        setMessage("");
-      }
-    } else {
+    if (!username || !email || !role || !password || !confirmPassword) {
       setMessage("Please fill in all details.");
       setWarning("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setWarning(
+        "Password must be 7-15 characters long, contain at least one capital letter, one special character, and one small letter."
+      );
+      setMessage("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setWarning("Passwords do not match.");
+      setMessage("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          role,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage("Successfully registered!");
+        setWarning("");
+        localStorage.setItem("user", JSON.stringify(data));
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else {
+        setWarning(data.message || "Registration failed. Please try again.");
+        setMessage("");
+      }
+    } catch (error) {
+      setWarning(
+        "Unable to connect to the server. Please check your connection and try again."
+      );
+      setMessage("");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -105,7 +144,9 @@ const Register = () => {
           </div>
           <div className="form-holder">
             <span
-              className={`lnr ${confirmPasswordVisible ? "lnr-eye" : "lnr-eye-off"}`}
+              className={`lnr ${
+                confirmPasswordVisible ? "lnr-eye" : "lnr-eye-off"
+              }`}
               onClick={toggleConfirmPasswordVisibility}
             ></span>
             <span className="lnr lnr-lock"></span>
@@ -116,8 +157,8 @@ const Register = () => {
               placeholder="Confirm Password"
             />
           </div>
-          <button type="submit">
-            <span>Register</span>
+          <button type="submit" disabled={isSubmitting}>
+            <span>{isSubmitting ? "Registering..." : "Register"}</span>
           </button>
           <p>
             Already have an account? <a href="/login">Click here to login</a>
@@ -130,7 +171,7 @@ const Register = () => {
           alt="Teacher Avatar"
           className="register-image"
         />
-        <div className="about-box slide-in">
+        <div className="about-content">
           <h3>About Us</h3>
           <p>
             Welcome to <strong>Auto Grade</strong>, your one-stop solution for
@@ -142,12 +183,6 @@ const Register = () => {
             At <strong>Auto Grade</strong>, we believe in leveraging technology
             to simplify the grading system, improve student engagement, and
             enhance learning experiences. Our platform provides:
-          </p>
-          <p>
-            At <strong>Auto Grade</strong>, we believe in transforming the
-            traditional education system with smart automation. Our platform
-            simplifies assessments, reduces workload, and provides real-time
-            insights to enhance learning outcomes.
           </p>
           <ul>
             <li>
@@ -171,18 +206,6 @@ const Register = () => {
               privacy and security for all users.
             </li>
           </ul>
-          <p>
-            Our goal is to empower educators with automation and enhance student
-            learning experiences through intelligent analytics. Whether you're a
-            student striving for better results or an educator seeking
-            efficiency, Auto Grade is here for you.
-            <strong>Let’s redefine education together!</strong>
-          </p>
-          <p>
-            Whether you are a student, educator, or institution, Auto Grade is
-            here to transform the way education is managed. Join us in shaping
-            the future of smart learning!
-          </p>
         </div>
       </div>
     </div>
