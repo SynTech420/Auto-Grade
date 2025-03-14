@@ -55,6 +55,45 @@ const Login = () => {
 
   return (
     <div className="login-wrapper animated fadeIn">
+      <div className="sliding-text">
+        <span className="line-1">
+          <span>A</span>
+          <span>u</span>
+          <span>t</span>
+          <span>o</span>
+        </span>
+        <span className="line-2">
+          <span>G</span>
+          <span>r</span>
+          <span>a</span>
+          <span>d</span>
+          <span>e</span>
+        </span>
+        <span className="line-3">
+          <span> </span>
+          <span> </span>
+          <span>T</span>
+          <span>h</span>
+          <span>e</span> <span>F</span>
+          <span>u</span>
+          <span>t</span>
+          <span>u</span>
+          <span>r</span>
+          <span>e</span> <span>o</span>
+          <span>f</span> <span>S</span>
+          <span>m</span>
+          <span>a</span>
+          <span>r</span>
+          <span>t</span> <span>L</span>
+          <span>e</span>
+          <span>a</span>
+          <span>r</span>
+          <span>n</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </span>
+      </div>
       <div className="login-inner animated bounceIn">
         <form id="loginForm" onSubmit={handleLogin} method="POST">
           <div className="welcome-message">Welcome to Auto Grade</div>

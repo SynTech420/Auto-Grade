@@ -2,12 +2,13 @@
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(to bottom, #b69ece, #b8b5b599);
-  margin: 0;
+  margin: 10px; /* Added margin from page border */
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: calc(100vh - 20px); /* Adjusted height to account for margin */
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Wrapper */
@@ -15,7 +16,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
+  height: calc(100vh - 20px); /* Adjusted height to account for margin */
   flex-direction: row;
   padding: 0 80px;
 }
@@ -202,7 +203,7 @@ button:hover {
   width: 220px;
   background: #b98ee5;
   padding: 20px;
-  min-height: 100vh;
+  height: calc(100vh - 20px); /* Adjusted height to account for margin */
   position: fixed;
   left: 0;
   top: 0;
@@ -234,6 +235,7 @@ button:hover {
   margin-left: 250px;
   padding: 20px;
   width: calc(100% - 250px);
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Card Grid */
@@ -292,7 +294,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center; /* Modified */
-  min-height: 100vh;
+  height: calc(100vh - 20px); /* Adjusted height to account for margin */
   padding: 0 20px; /* Modified */
   font-size: 18px; /* Added to increase text size */
 }
@@ -338,7 +340,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
   flex-direction: row;
   padding: 0 80px;
 }
@@ -355,7 +356,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   order: 2;
-  margin-left: -125px; /* Modified */
+  margin-left: -100px; /* Modified */
   animation: fadeIn 1s ease-in-out; /* Added */
 }
 
@@ -363,7 +364,7 @@ button:hover {
   width: 430px;
   height: 450px;
   margin-bottom: 1px;
-  right: -20px; /* Modified */
+ /* Modified */
   z-index: 200;
   mask-image: linear-gradient(
     to top,
@@ -378,7 +379,85 @@ button:hover {
   animation: fadeInLeft 1s ease-in-out; /* Added */
 }
 
+/* Sliding Text Animation */
+.sliding-text {
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  height: 80vh;
+  margin-right: -160px;
+}
+
+.sliding-text span {
+  display: inline-block;
+  animation: fadeInRight 10s ease-in-out 1;
+  background: linear-gradient(to right, #6a1b9a, #b795d9);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(70, 57, 72, 0.3); /* Added text shadow */
+  margin-bottom: -20px;
+}
+
+
+.sliding-text .line-1 span,
+.sliding-text .line-2 span {
+  font-size: 160px;
+  font-weight: bold;
+  font-family: "Arial Black", Gadget, sans-serif; /* Changed font */
+  text-stroke: 1px #420d63; /* Added text stroke */
+}
+
+.sliding-text .line-3 span {
+  font-size: 50px;
+  font-weight: normal;
+  color: grey; /* Changed color to grey */
+  font-family: "Courier New", Courier, monospace; /* Changed font */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Added text shadow */
+}
+
+/* Sparkle Effect */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.sliding-text .line-1 span::after {
+  animation-delay: 10s;
+}
+
+.sliding-text .line-2 span::after {
+  animation-delay: 10.2s;
+}
+
+.sliding-text .line-3 span::after {
+  animation-delay: 10.4s;
+}
+
 /* Animations */
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -440,7 +519,7 @@ button:hover {
   .sidebar {
     width: 100%; /* Full width for sidebar */
     position: relative; /* Adjust position */
-    min-height: auto; /* Adjust height */
+    height: auto; /* Adjust height */
   }
   .main-content {
     margin-left: 0; /* Adjust margin */
