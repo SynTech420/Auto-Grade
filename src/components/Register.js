@@ -95,6 +95,7 @@ const Register = () => {
   };
 
   return (
+
     <div className="register-wrapper fade-in">
       <div className="about-box">
         <h3>About Us</h3>
@@ -131,6 +132,10 @@ const Register = () => {
             privacy and security for all users.
           </li>
         </ul>
+        <p>
+          Whether you are a <strong>Student, Educator, or Institution, Auto Grade</strong> is here to transform the way education is managed. 
+          Join us in shaping the future of smart learning!
+        </p>
       </div>
       <img src="image-3.png" alt="Register" className="register-image" />
       <div className="register-inner slide-in">

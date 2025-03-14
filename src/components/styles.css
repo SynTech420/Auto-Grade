@@ -57,12 +57,13 @@ body {
 }
 
 .about-box {
-  width: 500px;
+  width: 700px;
   background: #ffffff;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin-right: 170px; /* Added space between register wrapper and about us box */
+  margin-right: 40px; /* Added space between register wrapper and about us box */
+  margin-top: -20px;
   z-index: 100;
   height: auto;
   animation: fadeInUp 0.8s ease-in-out;
@@ -293,7 +294,7 @@ button:hover {
   justify-content: center; /* Modified */
   min-height: 100vh;
   padding: 0 20px; /* Modified */
-
+  font-size: 18px; /* Added to increase text size */
 }
 
 .register-inner {
