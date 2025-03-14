@@ -5,15 +5,16 @@ import "./styles.css";
 const Register = () => {
   const [message, setMessage] = useState("");
   const [warning, setWarning] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-  const togglePasswordVisibility = (id) => {
-    const input = document.getElementById(id);
-    if (input.type === "password") {
-      input.type = "text";
-    } else {
-      input.type = "password";
-    }
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
   };
 
   const validatePassword = (password) => {
@@ -90,30 +91,30 @@ const Register = () => {
             <span className="lnr lnr-chevron-down"></span>
           </div>
           <div className="form-holder">
+            <span
+              className={`lnr ${passwordVisible ? "lnr-eye" : "lnr-eye-off"}`}
+              onClick={togglePasswordVisibility}
+            ></span>
+            <span className="lnr lnr-lock"></span>
             <input
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               id="password"
               className="form-control"
               placeholder="Password"
             />
-            <span
-              className="lnr lnr-eye"
-              onClick={() => togglePasswordVisibility("password")}
-            ></span>
-            <span className="lnr lnr-lock"></span>
           </div>
           <div className="form-holder">
+            <span
+              className={`lnr ${confirmPasswordVisible ? "lnr-eye" : "lnr-eye-off"}`}
+              onClick={toggleConfirmPasswordVisibility}
+            ></span>
+            <span className="lnr lnr-lock"></span>
             <input
-              type="password"
+              type={confirmPasswordVisible ? "text" : "password"}
               id="confirmPassword"
               className="form-control"
               placeholder="Confirm Password"
             />
-            <span
-              className="lnr lnr-eye"
-              onClick={() => togglePasswordVisibility("confirmPassword")}
-            ></span>
-            <span className="lnr lnr-lock"></span>
           </div>
           <button type="submit">
             <span>Register</span>
@@ -178,8 +179,9 @@ const Register = () => {
             <strong>Let’s redefine education together!</strong>
           </p>
           <p>
-             Whether you are a student, educator, or institution, Auto Grade is here to transform the way education is managed. 
-             Join us in shaping the future of smart learning!
+            Whether you are a student, educator, or institution, Auto Grade is
+            here to transform the way education is managed. Join us in shaping
+            the future of smart learning!
           </p>
         </div>
       </div>

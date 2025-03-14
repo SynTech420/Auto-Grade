@@ -46,7 +46,7 @@ body {
 }
 
 .image-1 {
-  width: 410px;
+  width: 430px;
   height: 450px;
   margin-bottom: 1px;
   right: -50px; /* Modified */
@@ -265,7 +265,7 @@ button:hover {
 }
 
 .register-image {
-  width: 410px;
+  width: 430px;
   height: 450px;
   margin-bottom: 0.5px;
   right: -20px; /* Modified to match login */
@@ -303,7 +303,7 @@ button:hover {
 }
 
 .login-image {
-  width: 410px;
+  width: 430px;
   height: 450px;
   margin-bottom: 1px;
   right: -20px; /* Modified */

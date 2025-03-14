@@ -4,20 +4,15 @@ import "./styles.css";
 
 const Login = () => {
   const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Added
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-  const togglePasswordVisibility = (id) => {
-    const input = document.getElementById(id);
-    if (input.type === "password") {
-      input.type = "text";
-    } else {
-      input.type = "password";
-    }
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   const handleLogin = async (e) => {
-    // Modified
     e.preventDefault();
     if (isSubmitting) return; // Prevent multiple submissions
     setIsSubmitting(true);
@@ -47,7 +42,6 @@ const Login = () => {
   };
 
   const fakeDatabaseCall = (username, password) => {
-    // Added
     return new Promise((resolve) => {
       setTimeout(() => {
         if (username === "Admin" && password === "Admin@123") {
@@ -78,12 +72,12 @@ const Login = () => {
           </div>
           <div className="form-holder">
             <span
-              className="lnr lnr-eye"
-              onClick={() => togglePasswordVisibility("password")}
+              className={`lnr ${passwordVisible ? "lnr-eye" : "lnr-eye-off"}`}
+              onClick={togglePasswordVisibility}
             ></span>
             <span className="lnr lnr-lock"></span>
             <input
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               id="password"
               name="password"
               className="form-control"
