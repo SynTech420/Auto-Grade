@@ -107,7 +107,49 @@ const Register = () => {
   };
 
   return (
+
     <div className="register-wrapper fade-in">
+      <div className="about-box">
+        <h3>About Us</h3>
+        <p>
+          Welcome to <strong>Auto Grade</strong>, your one-stop solution for
+          managing and grading academic activities. Our platform is designed to
+          streamline the educational process for both students and teachers.
+          Join us today and experience the future of education.
+        </p>
+        <p>
+          At <strong>Auto Grade</strong>, we believe in leveraging technology to
+          simplify the grading system, improve student engagement, and enhance
+          learning experiences. Our platform provides:
+        </p>
+        <ul>
+          <li>
+            ⚡ <strong>Automated Grading</strong> – Say goodbye to manual
+            corrections with our AI-powered assessment system.
+          </li>
+          <li>
+            📊 <strong>Performance Analytics</strong> – Get insights into
+            student progress and class performance.
+          </li>
+          <li>
+            👨‍🏫 <strong>Teacher & Student Collaboration</strong> – Interactive
+            tools for seamless communication.
+          </li>
+          <li>
+            🗂️ <strong>Classroom Management</strong> – Easily organize
+            assignments, tests, and grading records.
+          </li>
+          <li>
+            🔒 <strong>Secure & Reliable</strong> – Data encryption ensures
+            privacy and security for all users.
+          </li>
+        </ul>
+        <p>
+          Whether you are a <strong>Student, Educator, or Institution, Auto Grade</strong> is here to transform the way education is managed. 
+          Join us in shaping the future of smart learning!
+        </p>
+      </div>
+      <img src="image-3.png" alt="Register" className="register-image" />
       <div className="register-inner slide-in">
         <form id="registerForm" onSubmit={handleSubmit}>
           <h3>Register</h3>
@@ -176,49 +218,6 @@ const Register = () => {
             Already have an account? <a href="/login">Click here to login</a>
           </p>
         </form>
-      </div>
-      <div className="about-us fade-in">
-        <img
-          src="image-3.png"
-          alt="Teacher Avatar"
-          className="register-image"
-        />
-        <div className="about-content">
-          <h3>About Us</h3>
-          <p>
-            Welcome to <strong>Auto Grade</strong>, your one-stop solution for
-            managing and grading academic activities. Our platform is designed
-            to streamline the educational process for both students and
-            teachers. Join us today and experience the future of education.
-          </p>
-          <p>
-            At <strong>Auto Grade</strong>, we believe in leveraging technology
-            to simplify the grading system, improve student engagement, and
-            enhance learning experiences. Our platform provides:
-          </p>
-          <ul>
-            <li>
-              ⚡ <strong>Automated Grading</strong> – Say goodbye to manual
-              corrections with our AI-powered assessment system.
-            </li>
-            <li>
-              📊 <strong>Performance Analytics</strong> – Get insights into
-              student progress and class performance.
-            </li>
-            <li>
-              👨‍🏫 <strong>Teacher & Student Collaboration</strong> – Interactive
-              tools for seamless communication.
-            </li>
-            <li>
-              🗂️ <strong>Classroom Management</strong> – Easily organize
-              assignments, tests, and grading records.
-            </li>
-            <li>
-              🔒 <strong>Secure & Reliable</strong> – Data encryption ensures
-              privacy and security for all users.
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );
