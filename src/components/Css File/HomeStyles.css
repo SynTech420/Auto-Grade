@@ -1,0 +1,227 @@
+/* ======= General Styles ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to bottom, #cd8be0, #b8b5b599);
+  margin: 10px; /* Added margin from page border */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 20px); /*Adjusted height to account for margin8/*
+  overflow: auto; 
+}
+
+.home-container {
+  padding-top: 80px; /* Adjust based on header height */
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 30px 60px;
+  position: absolute;
+  width: calc(100% - 40px); /* Adjust width to account for margin */
+  top: 10px;
+  left: 20px; /* Add space from the left */
+  right: 30px; /* Add space from the right */
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  border-radius: 15px; /* Add curved corners */
+  margin: 10px; /* Add space from the page */
+  height: 1px;
+}
+
+.logo {
+  height: 100px;
+}
+
+.nav {
+  display: flex;
+  gap: 60px;
+  align-items: center; /* Ensure items are centered vertically */
+  margin-left: 250px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: #ffcc00;
+}
+
+.login-btn {
+  background: #6a1b9a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 200px;
+  text-align: center;
+  margin-right:3px;
+}
+
+.login-btn:hover {
+  background: #420d63;
+}
+
+/* ======= Hero Section ======= */
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+} 
+
+.hero-content {
+  max-width: 600px;
+  margin-top: 10px;
+  margin-left: 400px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.cta-btn {
+  background: #6a1b9a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cta-btn:hover {
+  background: #420d63;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 1000px; /* Ensure it fits within the container */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 930px;
+  margin-right: 15px;
+  border-radius: 15px;;
+  /* animation: fadeIn 2s ease-in-out, slideRight 5s 2s forwards; Add fade-in and slide-right animations */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(0); /* Move to the original position */
+  }
+}
+
+/* ======= Courses Section ======= */
+.courses {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.courses-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.course-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.course-card img {
+  width: 60px;
+}
+
+.course-card h3 {
+  margin: 10px 0;
+}
+
+/* ======= Testimonials Section ======= */
+.testimonials {
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* ======= Footer ======= */
+.footer {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  /* margin: 30px; */
+  right: 5px;
+  margin-bottom: 10px;
+  width: 1400px;
+  border-radius: 15px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust gap between icons */
+  margin-top: 20px;
+}
+
+.social-icons img {
+  width: 30px; /* Resize icons */
+  height: 30px; /* Ensure icons are square */
+  transition: transform 0.3s ease; /* Add transition for hover effect */
+}
+
+.social-icons img:hover {
+  transform: scale(1.2); /* Enlarge icons on hover */
+}

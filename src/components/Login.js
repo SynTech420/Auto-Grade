@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import "./Css File/styles.css";
 
 const Login = () => {
   const [message, setMessage] = useState("");
@@ -55,6 +55,9 @@ const Login = () => {
 
   return (
     <div className="login-wrapper animated fadeIn">
+      <div className="home-icon" onClick={() => navigate("/")}>
+        🏠
+      </div>
       <div className="sliding-text">
         <span className="line-1">
           <span>A</span>
