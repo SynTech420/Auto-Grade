@@ -57,17 +57,20 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "User not found" });
     }
 
-    if (await user.matchPassword(password)) {
-      res.json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        role: user.role,
-        token: generateToken(user._id),
-      });
-    } else {
-      res.status(401).json({ message: "Invalid password" });
+    // Check password
+    const isMatch = await user.matchPassword(password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid password" });
     }
+
+    // If both checks pass, send success response
+    res.json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
