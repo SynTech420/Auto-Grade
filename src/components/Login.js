@@ -42,7 +42,21 @@ const Login = () => {
         setMessage("");
         navigate("/");
       } else {
-        setMessage(data.message || "Invalid credentials");
+        if (data.message === "User not found") {
+          setMessage(
+            <div>
+              User not found. Please{" "}
+              <a href="/register" className="register-link">
+                register here
+              </a>{" "}
+              to create an account.
+            </div>
+          );
+        } else if (data.message === "Invalid password") {
+          setMessage("Invalid password. Please try again.");
+        } else {
+          setMessage(data.message || "Invalid username or password");
+        }
       }
     } catch (error) {
       setMessage(
