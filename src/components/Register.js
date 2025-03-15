@@ -81,7 +81,19 @@ const Register = () => {
           navigate("/");
         }, 2000);
       } else {
-        setWarning(data.message || "Registration failed. Please try again.");
+        if (data.message === "Username already exists") {
+          setWarning(
+            <div>
+              Username already exists. Please{" "}
+              <a href="/login" className="login-link">
+                login here
+              </a>{" "}
+              or try a different username.
+            </div>
+          );
+        } else {
+          setWarning(data.message || "Registration failed. Please try again.");
+        }
         setMessage("");
       }
     } catch (error) {

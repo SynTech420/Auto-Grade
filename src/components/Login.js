@@ -42,19 +42,7 @@ const Login = () => {
         setMessage("");
         navigate("/");
       } else {
-        if (response.status === 401) {
-          setMessage(
-            <div>
-              User not found. Please{" "}
-              <a href="/register" className="register-link">
-                register here
-              </a>{" "}
-              to create an account.
-            </div>
-          );
-        } else {
-          setMessage(data.message || "Invalid username or password");
-        }
+        setMessage(data.message || "Invalid username or password");
       }
     } catch (error) {
       setMessage(
