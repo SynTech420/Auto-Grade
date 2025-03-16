@@ -40,7 +40,7 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem("user", JSON.stringify(data));
         setMessage("");
-        navigate("/");
+        navigate("/home");
       } else {
         if (data.message === "User not found") {
           setMessage(

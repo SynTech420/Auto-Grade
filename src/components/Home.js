@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import "./Css File/HomeStyles.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
-    // Get user data from localStorage
-    const userData = localStorage.getItem("user");
-    if (userData) {
-      setUser(JSON.parse(userData));
+    // Check if user is logged in
+    const user = localStorage.getItem("user");
+    if (!user) {
+      navigate("/login");
+      return;
     }
-  }, []);
 
-  // Handle logout
+    // Parse user data
+    const userData = JSON.parse(user);
+    if (!userData.token) {
+      navigate("/login");
+    } else {
+      // Set the username from user data
+      setUsername(userData.username);
+    }
+  }, [navigate]);
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate("/login");
@@ -30,25 +39,14 @@ const Home = () => {
         <button>Schedule Meet</button>
         <button>Create Classroom</button>
         <button>Calendar</button>
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
-        {user ? (
-          <>
-            <h2>Hello {user.username}, Welcome Back...</h2>
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <h2>Welcome to Auto Grade</h2>
-            <button className="login-btn" onClick={() => navigate("/login")}>
-              Login
-            </button>
-          </>
-        )}
+        <h2>Hello {username}, Welcome Back...</h2>
 
         {/* Card Section */}
         <div className="card-container">

@@ -15,6 +15,7 @@ const counterSchema = mongoose.Schema(
   },
   {
     collection: "counters",
+    versionKey: false, // Disable the version key
   }
 );
 
@@ -22,20 +23,5 @@ const counterSchema = mongoose.Schema(
 counterSchema.index({ _id: 1 }, { unique: true });
 
 const Counter = mongoose.model("Counter", counterSchema);
-
-// Initialize counters if they don't exist
-const initializeCounters = async () => {
-  const roles = ["student", "teacher"];
-  for (const role of roles) {
-    await Counter.findOneAndUpdate(
-      { _id: role },
-      { $setOnInsert: { seq: 0 } },
-      { upsert: true, new: true }
-    );
-  }
-};
-
-// Initialize counters when the model is first loaded
-initializeCounters().catch(console.error);
 
 module.exports = Counter;
