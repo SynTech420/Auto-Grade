@@ -15,10 +15,10 @@ const registerUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
 
-    // Check if username exists
-    const usernameExists = await User.findOne({ username });
-    if (usernameExists) {
-      return res.status(400).json({ message: "Username already exists" });
+    // Check if user exists
+    const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    if (userExists) {
+      return res.status(400).json({ message: "User already exists" });
     }
 
     // Create user
@@ -50,27 +50,24 @@ const loginUser = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Check for user by username
+    // Check for user
     const user = await User.findOne({ username });
 
     if (!user) {
       return res.status(401).json({ message: "User not found" });
     }
 
-    // Check password
-    const isMatch = await user.matchPassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid password" });
+    if (await user.matchPassword(password)) {
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401).json({ message: "Invalid password" });
     }
-
-    // If both checks pass, send success response
-    res.json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-      token: generateToken(user._id),
-    });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
