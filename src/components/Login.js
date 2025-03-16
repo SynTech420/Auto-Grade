@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseUser } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon
 import "./Css File/styles.css";
 
 const Login = () => {
@@ -70,7 +72,9 @@ const Login = () => {
   return (
     <div className="login-wrapper animated fadeIn">
       <div className="home-icon" onClick={() => navigate("/")}>
-        🏠
+        <FontAwesomeIcon icon={faHouseUser} /> {/* Use the imported icon */}
+        <span className="home-text">Home</span>{" "}
+        {/* Add text next to the icon */}
       </div>
       <div className="sliding-text">
         <span className="line-1">

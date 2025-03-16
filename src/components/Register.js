@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseUser } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon
 import "./Css File/styles.css";
 
 const Register = () => {
@@ -107,10 +109,11 @@ const Register = () => {
   };
 
   return (
-
     <div className="register-wrapper fade-in">
       <div className="home-icon" onClick={() => navigate("/")}>
-        🏠
+        <FontAwesomeIcon icon={faHouseUser} /> {/* Use the imported icon */}
+        <span className="home-text">Home</span>{" "}
+        {/* Add text next to the icon */}
       </div>
       <div className="about-box">
         <h3>About Us</h3>
@@ -148,8 +151,10 @@ const Register = () => {
           </li>
         </ul>
         <p>
-          Whether you are a <strong>Student, Educator, or Institution, Auto Grade</strong> is here to transform the way education is managed. 
-          Join us in shaping the future of smart learning!
+          Whether you are a{" "}
+          <strong>Student, Educator, or Institution, Auto Grade</strong> is here
+          to transform the way education is managed. Join us in shaping the
+          future of smart learning!
         </p>
       </div>
       <img src="image-3.png" alt="Register" className="register-image" />

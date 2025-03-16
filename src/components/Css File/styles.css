@@ -365,9 +365,9 @@ button:hover {
 /* Login Page Styles */
 .login-wrapper {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
-  flex-direction: row;
+  /* flex-direction: row; */
   padding: 0 80px;
 }
 
@@ -458,15 +458,15 @@ button:hover {
 }
 
 .sliding-text .line-1 span::after {
-  animation-delay: 10s;
+  animation-delay: 2s;
 }
 
 .sliding-text .line-2 span::after {
-  animation-delay: 10.2s;
+  animation-delay: 2.4s;
 }
 
 .sliding-text .line-3 span::after {
-  animation-delay: 10.4s;
+  animation-delay: 2.4s;
 }
 
 /* Animations */
@@ -519,7 +519,7 @@ button:hover {
 /* Home Icon */
 .home-icon {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 20px;
   font-size: 2rem;
   cursor: pointer;
