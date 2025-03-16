@@ -1,0 +1,213 @@
+/* Wrapper */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.hero-section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-1 {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 200;
+  mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 10%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 30%
+  );
+  animation: fadeInRight 1s ease-in-out;
+}
+
+.about-box {
+  width: 100%;
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  text-align: left;
+  position: relative;
+  z-index: 100;
+  height: auto;
+  animation: fadeInLeft 0.8s ease-in-out;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.about-us {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Add new animation for right side entrance */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-section {
+    order: -1;
+  }
+
+  .image-1 {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about-box {
+    margin-top: 20px;
+  }
+}
+
+.hero {
+  padding: 60px 40px;
+  background: linear-gradient(to right, rgba(182, 158, 206, 0.1), rgba(184, 181, 181, 0.05));
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  animation: fadeInLeft 0.8s ease-in-out;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  animation: fadeInLeft 1s ease-in-out;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInRight 1s ease-in-out;
+}
+
+.cta-btn {
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.cta-btn:hover {
+  background: #420d63;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(106, 27, 154, 0.2);
+}
+
+/* Responsive styles for hero section */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-text {
+    padding-right: 0;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-image {
+    margin-bottom: 30px;
+  }
+
+  .hero-image img {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+  }
+} 

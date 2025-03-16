@@ -57,22 +57,25 @@ const Home = () => {
         </button>
       </header>
 
-      <section className="illustration"></section>
-
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1>
-            Transforming Education <br />
-            with Auto Grade
-          </h1>
-          <p>
-            Automate grading, enhance learning, and streamline educational
-            management.
-          </p>
-          <button className="cta-btn" onClick={handleStartLearningClick}>
-            Start Learning
-          </button>
+          <div className="hero-text">
+            <h1>
+              Transforming Education <br />
+              with Auto Grade
+            </h1>
+            <p>
+              Automate grading, enhance learning, and streamline educational
+              management.
+            </p>
+            <button className="cta-btn" onClick={handleStartLearningClick}>
+              Start Learning
+            </button>
+          </div>
+          <div className="hero-img">
+            <img src="Header Image.png" alt="Education Illustration" />
+          </div>
         </div>
       </section>
 
@@ -197,8 +200,9 @@ const Home = () => {
 
         <div className="about-image">
           <img
-            src="about-us-illustration.png"
+            src="/Untitled design (5).png"
             alt="AI Education Illustration"
+            className="about-right-dec"
           />
         </div>
       </section>
@@ -252,7 +256,7 @@ const Home = () => {
                 rel="noopener noreferrer"
               >
                 Location: All India Shri Shivaji Memorial Society's Institue of
-                Information technology, Pune
+                Information technology, Pune, 411011.
               </a>
             </p>
             <p>Phone: +91 9322592505</p>

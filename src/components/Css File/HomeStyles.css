@@ -29,22 +29,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 30px 60px;
+  background: rgba(223, 221, 221, 0.2);
+  padding: 30px;
   position: absolute;
-  width: calc(100% - 40px); /* Adjust width to account for margin */
-  top: 10px;
-  left: 20px; /* Add space from the left */
-  right: 30px; /* Add space from the right */
+  width: 100%;
+  top: 1px;
   backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border-radius: 15px; /* Add curved corners */
-  margin: 10px; /* Add space from the page */
   height: 1px;
 }
 
 .logo {
   height: 100px;
+  margin-left: 100px;;
 }
 
 .nav {
@@ -62,7 +60,7 @@ body {
 }
 
 .nav a:hover {
-  color: #ffcc00;
+  color: #6a1b9a;
 }
 
 .login-btn {
@@ -76,113 +74,110 @@ body {
   width: 200px;
   text-align: center;
   margin-right: 3px;
+  font-family: 'Arial Black', sans-serif; /* Change font */
+  transition: background 0.3s ease, transform 0.3s ease; /* Add transition */
 }
 
 .login-btn:hover {
   background: #420d63;
+  transform: scale(1.05); /* Add scale effect */
 }
 
 /* ======= Hero Section ======= */
-.illustration {
+.hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
+  padding: 30px 60px;
+  margin-top: 2280px; /* Adjust margin to prevent overlap with header */
+  margin-left: 10px;
 }
 
 .hero-content {
-  max-width: 600px;
-  margin-top: 2000px;
-  margin-left: 450px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
-.hero h1 {
-  font-size: 38px;
-  font-weight: bold;
+.hero-text {
+  flex: 1;
+  padding-right: 20px;
+  animation: fadeInLeft 3s ease-in-out; /* Add animation */
 }
 
-.hero p {
-  margin: 20px 0;
-  font-size: 18px;
+.hero-text h1 {
+  font-size: 3.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  font-family: 'Arial Black', sans-serif; /* Change font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
+  background: linear-gradient(to right, #6a1b9a, #9c27b0);
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
-.cta-btn {
+.hero-text h1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  font-family: 'Courier New', Courier, monospace; /* Change font */
+  animation: fadeInUp 1.5s ease-in-out; /* Add animation */
+}
+
+.hero-btn {
   background: #6a1b9a;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Arial Black', sans-serif; /* Change font */
+  transition: background 0.3s ease, transform 0.3s ease; /* Add transition */
 }
-
-.cta-btn:hover {
-  background: #420d63;
-}
-
-.hero-img {
-  width: 100%;
-  max-width: 1000px; /*Ensure it fits within the container */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 10px;
-  margin-right: 15px;
-  border-radius: 15px;
-  /* animation: fadeIn 2s ease-in-out, slideRight 5s 2s forwards; Add fade-in and slide-right animations */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(100%); /* Start from the right */
-  }
-  100% {
-    transform: translateX(0); /* Move to the original position */
-  }
-}
-
-/* ======= Courses Section ======= */
-.courses {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.courses-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 30px;
-}
-
-.course-card {
-  background: white;
-  color: black;
-  padding: 20px;
-  width: 250px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.course-card img {
-  width: 60px;
-}
-
-.course-card h3 {
-  margin: 10px 0;
+.hero-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
 }
 
 /* ======= Services Section ======= */
 .services {
   padding: 60px 20px;
   text-align: center;
+  position: relative; /* Add relative positioning */
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/public/services-left-dec.png') no-repeat left center; /* Add background image */
+  background: url('/public/services-right-dec.png') no-repeat right center;
+  background-size: contain; /* Ensure the background image fits the container */
+  opacity: 0.2; /* Decrease opacity */
+  z-index: -1; /* Ensure it is behind other content */
 }
 
 .services h2 {
@@ -350,18 +345,17 @@ body {
 }
 
 .about-image {
-  width: 650px; /* Increase width */
+  width: 100%; /* Ensure the image covers the container */
   height: 600px; /* Maintain aspect ratio */
-  overflow: hidden; /*Hide overflow */
+  overflow: hidden; /* Hide overflow */
   align-items: right;
-  border-radius: 15px; /* Add curved corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow */
+  margin-left: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
 }
 
 .about-image img {
   width: 100%; /* Ensure the image covers the container */
-  height: 100%;
+  height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure the image covers the container */
   opacity: 0.8; /* Add slight transparency */
   transition: opacity 0.3s ease; /* Add transition for hover effect */
@@ -381,6 +375,12 @@ body {
   /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)); */
   border-radius: 15px; /* Add curved corners */
   pointer-events: none; /* Allow interactions with the image */
+}
+
+.about-right-dec {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Animations */
@@ -403,6 +403,37 @@ body {
     opacity: 1;
   }
 }
+
+/* ======= Courses Section ======= */
+.courses {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.courses-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.course-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.course-card img {
+  width: 60px;
+}
+
+.course-card h3 {
+  margin: 10px 0;
+}
+
 
 /* ======= Testimonials Section ======= */
 .testimonials {
@@ -538,4 +569,56 @@ body {
   to {
     opacity: 1;
   }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Image After Hero */
+.after-hero-image-container {
+  width: 100%;
+  overflow: hidden;
+  position: left;
+  /* margin-top: px; Adjust margin as needed */
+  margin-left: 850px;
+}
+
+.after-hero-image {
+  width: 40%;
+  height: auto;
+  display: block;
+  border-radius: 15px; /* Add curved corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  transition: opacity 0.3s ease; /* Add transition for hover effect */
+}
+
+.after-hero-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+  border-radius: 15px; /* Add curved corners */
+  pointer-events: none; /* Allow interactions with the image */
 }
