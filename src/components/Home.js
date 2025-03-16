@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import "./Css File/HomeStyles.css";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Check if user is logged in
+    const user = localStorage.getItem("user");
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    // Parse user data
+    const userData = JSON.parse(user);
+    if (!userData.token) {
+      navigate("/login");
+    } else {
+      // Set the username from user data
+      setUsername(userData.username);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   return (
     <div className="home-container">
@@ -15,16 +39,14 @@ const Home = () => {
         <button>Schedule Meet</button>
         <button>Create Classroom</button>
         <button>Calendar</button>
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
-        <h2>Hello Shaikh, Welcome Back...</h2>
-        
-        {/* Login Button */}
-        <button className="login-btn" onClick={() => navigate("/login")}>
-          Login
-        </button>
+        <h2>Hello {username}, Welcome Back...</h2>
 
         {/* Card Section */}
         <div className="card-container">

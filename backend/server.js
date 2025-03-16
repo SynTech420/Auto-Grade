@@ -2,13 +2,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const User = require("./models/userModel"); // Ensure this model exists
+const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
 
 // Load env vars
 dotenv.config();
 
 // Verify environment variables
-console.log("MongoDB URI:", process.env.MONGO_URI);
 console.log("Environment Variables Loaded:", {
   PORT: process.env.PORT,
   MONGO_URI: process.env.MONGO_URI ? "Found" : "Not Found",
@@ -28,53 +28,42 @@ app.get("/health", (req, res) => {
 });
 
 // Routes
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users", userRoutes);
 
-// Login endpoint to verify user credentials
-app.post("/api/users/login", async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    if (!username || !password) {
-      return res
-        .status(400)
-        .json({ message: "Username and password are required" });
-    }
-
-    const user = await User.findOne({ username });
-
-    if (!user) {
-      return res
-        .status(401)
-        .json({ message: "User not found. Please register." });
-    }
-
-    // Verify password (assuming passwords are stored in plain text for simplicity)
-    if (user.password !== password) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-    // Return user details (excluding sensitive information)
-    res.status(200).json({
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-    });
-  } catch (error) {
-    console.error("Error during login:", error);
-    res.status(500).json({ message: "Server error" });
+// Initialize or update counters
+const initializeCounters = async (Counter) => {
+  const roles = ["student", "teacher"];
+  for (const role of roles) {
+    await Counter.findOneAndUpdate(
+      { _id: role },
+      { $setOnInsert: { seq: 0 } },
+      { upsert: true, new: true }
+    );
   }
-});
+  console.log("Counters initialized/updated");
+};
 
-const PORT = process.env.PORT || 5000;
-
-// Connect to MongoDB with retry mechanism
+// Connect to MongoDB and start server
 const startServer = async () => {
   try {
-    await connectDB();
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+    // Connect to MongoDB
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
+
+    // Initialize collections and indexes
+    const Counter = require("./models/counterModel");
+    const User = require("./models/userModel");
+
+    // Create indexes
+    await User.collection.createIndex({ userId: 1 }, { unique: true });
+    console.log("User indexes created successfully");
+
+    // Initialize counters without dropping the collection
+    await initializeCounters(Counter);
+
+    // Start server
+    app.listen(process.env.PORT || 5000, () => {
+      console.log(`Server running on port ${process.env.PORT || 5000}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

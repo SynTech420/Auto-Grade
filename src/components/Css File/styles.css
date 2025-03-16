@@ -190,12 +190,57 @@ button {
   border-radius: 10px;
   font-size: 16px;
   margin-top: 10px;
-  transition: background 0.3s ease; /* Added */
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background: #420d63;
-  transform: scale(1.05); /* Added */
+  transform: scale(1.05);
+}
+
+/* Sidebar button specific styles */
+.sidebar button {
+  width: 100%;
+  text-align: left;
+  background: white;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar button:hover {
+  background: #ddd;
+  transform: scale(1.05);
+}
+
+/* Home page specific button styles */
+.login-btn,
+.logout-btn {
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  width: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background: #4a148c;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 /* Sidebar */
@@ -210,24 +255,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.sidebar button {
-  width: 100%;
-  text-align: left;
-  background: white;
-  border: none;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease; /* Added */
-}
-
-.sidebar button:hover {
-  background: #ddd;
-  transform: scale(1.05); /* Added */
 }
 
 /* Main Content */
@@ -364,7 +391,7 @@ button:hover {
   width: 430px;
   height: 450px;
   margin-bottom: 1px;
- /* Modified */
+  /* Modified */
   z-index: 200;
   mask-image: linear-gradient(
     to top,
@@ -403,7 +430,6 @@ button:hover {
   margin-bottom: -20px;
 }
 
-
 .sliding-text .line-1 span,
 .sliding-text .line-2 span {
   font-size: 160px;
@@ -422,7 +448,8 @@ button:hover {
 
 /* Sparkle Effect */
 @keyframes sparkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
   }
   50% {
