@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const User = require("./models/userModel"); // Ensure this model exists
+const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
 
 // Load env vars
 dotenv.config();
@@ -28,7 +30,7 @@ app.get("/health", (req, res) => {
 });
 
 // Routes
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users", userRoutes);
 
 // Login endpoint to verify user credentials
 app.post("/api/users/login", async (req, res) => {
@@ -67,14 +69,41 @@ app.post("/api/users/login", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-
 // Connect to MongoDB with retry mechanism
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
+
+    // Create indexes after connection
+    try {
+      await User.collection.createIndex({ userId: 1 }, { unique: true });
+      console.log("User indexes created successfully");
+    } catch (error) {
+      console.error("Error creating indexes:", error);
+    }
+
+    // Initialize collections and indexes
+    const Counter = require("./models/counterModel");
+
+    // Drop existing counters to start fresh
+    try {
+      await mongoose.connection.collection("counters").drop();
+      console.log("Counters collection dropped");
+    } catch (error) {
+      console.log("No counters collection to drop");
+    }
+
+    // Create initial counters
+    await Counter.create([
+      { _id: "student", seq: 0 },
+      { _id: "teacher", seq: 0 },
+    ]);
+    console.log("Counters initialized");
+
+    app.listen(process.env.PORT || 5000, () => {
+      console.log(`Server running on port ${process.env.PORT || 5000}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Get user data from localStorage
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   return (
     <div className="home-container">
@@ -19,12 +34,21 @@ const Home = () => {
 
       {/* Main Content */}
       <div className="main-content">
-        <h2>Hello Shaikh, Welcome Back...</h2>
-        
-        {/* Login Button */}
-        <button className="login-btn" onClick={() => navigate("/login")}>
-          Login
-        </button>
+        {user ? (
+          <>
+            <h2>Hello {user.username}, Welcome Back...</h2>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <h2>Welcome to Auto Grade</h2>
+            <button className="login-btn" onClick={() => navigate("/login")}>
+              Login
+            </button>
+          </>
+        )}
 
         {/* Card Section */}
         <div className="card-container">
