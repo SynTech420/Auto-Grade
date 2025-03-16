@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import "./Css File/styles.css";
 
 const Register = () => {
   const [message, setMessage] = useState("");
@@ -109,6 +109,9 @@ const Register = () => {
   return (
 
     <div className="register-wrapper fade-in">
+      <div className="home-icon" onClick={() => navigate("/")}>
+        🏠
+      </div>
       <div className="about-box">
         <h3>About Us</h3>
         <p>

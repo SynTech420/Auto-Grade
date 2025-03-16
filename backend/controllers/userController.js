@@ -53,10 +53,10 @@ const registerUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
 
-    // Check if username exists
-    const usernameExists = await User.findOne({ username });
-    if (usernameExists) {
-      return res.status(400).json({ message: "Username already exists" });
+    // Check if user exists
+    const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    if (userExists) {
+      return res.status(400).json({ message: "User already exists" });
     }
 
     // Generate unique user ID
@@ -96,7 +96,7 @@ const loginUser = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Check for user by username
+    // Check for user
     const user = await User.findOne({ username });
 
     if (!user) {
@@ -112,7 +112,6 @@ const loginUser = async (req, res) => {
     // If both checks pass, send success response
     res.json({
       _id: user._id,
-      userId: user.userId,
       username: user.username,
       email: user.email,
       role: user.role,

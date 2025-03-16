@@ -1,0 +1,541 @@
+/* ======= General Styles ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to bottom, #cd8be0, #b8b5b599);
+  background-attachment: fixed; /* Ensure the background does not repeat while scrolling */
+  background-size: cover; /* Ensure the background covers the entire height */
+  margin: 0; /* Remove margin */
+  padding: 0;
+  min-height: 100vh; /* Ensure the gradient covers the entire height */
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container {
+  flex: 1; /* Ensure the home container takes the full height */
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Adjust based on header height */
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 30px 60px;
+  position: absolute;
+  width: calc(100% - 40px); /* Adjust width to account for margin */
+  top: 10px;
+  left: 20px; /* Add space from the left */
+  right: 30px; /* Add space from the right */
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  border-radius: 15px; /* Add curved corners */
+  margin: 10px; /* Add space from the page */
+  height: 1px;
+}
+
+.logo {
+  height: 100px;
+}
+
+.nav {
+  display: flex;
+  gap: 60px;
+  align-items: center; /* Ensure items are centered vertically */
+  margin-left: 250px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: #ffcc00;
+}
+
+.login-btn {
+  background: #6a1b9a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 200px;
+  text-align: center;
+  margin-right: 3px;
+}
+
+.login-btn:hover {
+  background: #420d63;
+}
+
+/* ======= Hero Section ======= */
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-top: 2000px;
+  margin-left: 450px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.cta-btn {
+  background: #6a1b9a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cta-btn:hover {
+  background: #420d63;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 1000px; /*Ensure it fits within the container */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 10px;
+  margin-right: 15px;
+  border-radius: 15px;
+  /* animation: fadeIn 2s ease-in-out, slideRight 5s 2s forwards; Add fade-in and slide-right animations */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(0); /* Move to the original position */
+  }
+}
+
+/* ======= Courses Section ======= */
+.courses {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.courses-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.course-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.course-card img {
+  width: 60px;
+}
+
+.course-card h3 {
+  margin: 10px 0;
+}
+
+/* ======= Services Section ======= */
+.services {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.services p {
+  font-size: 16px;
+  color: #3a3939;
+}
+
+.services a {
+  color: #6a1b9a;
+  text-decoration: none;
+}
+
+.services a:hover {
+  color: #420d63;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.service-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.service-card a {
+  color: #6a1b9a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.service-card a:hover {
+  color: #420d63;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.service-card {
+  text-align: left;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-icon {
+  font-size: 40px;
+  color: #6a1b9a;
+  margin-bottom: 10px;
+}
+
+/* Highlighted Text */
+.highlight {
+  color: #420d63; /* Change this color to your desired highlight color */
+}
+
+/* ======= About Us Section ======= */
+.about-us {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background: linear-gradient(to right, #c85adb7c, #d29be16a);
+  color: #420b62;
+  animation: fadeInUp 1s ease-in-out;
+  border-radius: 15px; /* Add curved corners */
+  margin: 40px; /* Add margin */
+}
+
+.about-content {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1); /* Add a slight background color */
+  padding: 20px;
+  border-radius: 15px; /* Add curved corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+}
+
+.about-content:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.about-content h2 {
+  font-size: 32px; /* Increase font size */
+  font-weight: bold;
+  color: #d9c1ee; /* Change color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
+  margin-bottom: 20px; /* Add margin below */
+}
+
+.highlight {
+  color: #420b62;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.about-service-card {
+  background: rgba(245, 244, 244, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+}
+
+.about-service-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  background: aliceblue;
+}
+
+.about-service-card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #420b62;
+}
+
+.about-image {
+  width: 650px; /* Increase width */
+  height: 600px; /* Maintain aspect ratio */
+  overflow: hidden; /*Hide overflow */
+  align-items: right;
+  border-radius: 15px; /* Add curved corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+}
+
+.about-image img {
+  width: 100%; /* Ensure the image covers the container */
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  opacity: 0.8; /* Add slight transparency */
+  transition: opacity 0.3s ease; /* Add transition for hover effect */
+}
+
+.about-image:hover img {
+  opacity: 1; /* Remove transparency on hover */
+}
+
+.about-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)); */
+  border-radius: 15px; /* Add curved corners */
+  pointer-events: none; /* Allow interactions with the image */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ======= Testimonials Section ======= */
+.testimonials {
+  padding: 50px;
+  /* background: rgba(255, 255, 255, 0.05); */
+  text-align: center;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* ======= Footer ======= */
+.footer {
+  background: linear-gradient(to right, #6a1b9a, #9c27b0);
+  padding: 40px 20px;
+  color: white;
+  text-align: left;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  animation: fadeInUp 1s ease-in-out; /* Add fade-in animation */
+  position: relative; /* For gradient overlay */
+  overflow: hidden; /* Hide overflow for gradient overlay */
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent); */
+  background-size: 50px 50px;
+  opacity: 0.3; /* Adjust opacity for subtle effect */
+  pointer-events: none; /* Allow interactions with the footer */
+  animation: gradientMove 5s linear infinite; /* Add gradient animation */
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #ffcc00; /* Change color on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust gap between icons */
+  margin-top: 20px;
+}
+
+.social-icons img {
+  width: 30px; /* Resize icons */
+  height: 30px; /* Ensure icons are square */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Add transition for hover effect */
+}
+
+.social-icons img:hover {
+  transform: scale(1.2); /* Enlarge icons on hover */
+  filter: brightness(1.2); /* Brighten icons on hover */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
