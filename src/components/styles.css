@@ -379,19 +379,18 @@ button:hover {
   align-items: left;
   justify-content: center;
   height: 80vh;
-  margin-right: -160px;
+  margin-right: -400px;
 }
 
 .sliding-text span {
   display: inline-block;
-  animation: fadeInRight 10s ease-in-out 1;
+  animation: fadeInRight 2ms ease-in-out 1; /* Reduced animation time */
   background: linear-gradient(to right, #6a1b9a, #b795d9);
   -webkit-background-clip: text;
   color: transparent;
   text-shadow: 2px 2px 4px rgba(70, 57, 72, 0.3); /* Added text shadow */
   margin-bottom: -20px;
 }
-
 
 .sliding-text .line-1 span,
 .sliding-text .line-2 span {
@@ -608,4 +607,4 @@ button:hover {
   .hero-image img {
     max-width: 100%;
   }
-} 
+}

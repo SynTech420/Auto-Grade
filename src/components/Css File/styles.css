@@ -538,8 +538,8 @@ button:hover {
     margin-left: 0; /* Adjust for smaller screens */
   }
   .about-box {
-    width: 90%; /* Adjust width for smaller screens */
-    left: 5%; /* Center align */
+    width: 100%; /* Adjust width for smaller screens */
+    left: 10px; /* Center align */
   }
   .image-1,
   .register-image,

@@ -157,7 +157,6 @@ const Register = () => {
           future of smart learning!
         </p>
       </div>
-      <img src="image-3.png" alt="Register" className="register-image" />
       <div className="register-inner slide-in">
         <form id="registerForm" onSubmit={handleSubmit}>
           <h3>Register</h3>
@@ -226,6 +225,9 @@ const Register = () => {
             Already have an account? <a href="/login">Click here to login</a>
           </p>
         </form>
+      </div>
+      <div className="register-image-container">
+        <img src="image-3.png" alt="Register" className="register-image" />
       </div>
     </div>
   );

@@ -152,11 +152,13 @@ const Login = () => {
           </p>
         </form>
       </div>
-      <img
-        src="image-3.png"
-        alt="Teacher Avatar"
-        className="login-image animated fadeIn"
-      />
+      <div>
+        <img
+          src="image-3.png"
+          alt="Teacher Avatar"
+          className="login-image animated fadeIn"
+        />
+      </div>
     </div>
   );
 };
